@@ -11,7 +11,7 @@
         type="text"
         name="name"
         [(ngModel)]="user.name"
-        pattern="^[A-Z].{8,40}"
+        pattern="^[A-Z].{7,40}"
         required>
         <div [hidden]="userForm.controls.name?.valid" class="error-message">
           Minimum 8 maximum 40 karakter hosszú lehet a név.
