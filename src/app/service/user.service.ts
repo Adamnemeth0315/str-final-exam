@@ -45,6 +45,9 @@ export class UserService {
    * The method is: this.http.post
    */
 
+   create(user: User): Observable<User> {
+    return this.http.post<User>(`${this.endpoint}/${user.id}`, user);
+  }
 
 
   /**
