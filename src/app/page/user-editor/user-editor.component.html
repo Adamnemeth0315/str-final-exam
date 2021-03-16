@@ -1,7 +1,7 @@
 <div class="row">
   <div *ngIf="user$ | async as user" class="col-6 offset-3 mt-3">
     <h2>Update / Create User</h2>
-    <form #userForm="ngForm">
+    <form #userForm="ngForm" (ngSubmit)="onUpdate(user)">
       <input name="id" type="hidden" [(ngModel)]="user.id">
       <div class="form-group">
         <label>Name</label>
@@ -26,6 +26,7 @@
           type="text"
           name="email"
           [(ngModel)]="user.email"
+          pattern="\S+@\S+\.\S+"
           required>
           <div [hidden]="userForm.controls.email?.valid" class="error-message">
             Az email cím kitöltése kötelező!
@@ -53,7 +54,7 @@
           <option [ngValue]="false">inactive</option>
         </select>
       </div>
-      <button [disabled]="userForm.invalid" type="submit" (click)="onUpdate(user)" class="btn btn-primary btn-block mt-5">
+      <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary btn-block mt-5">
         <i class="fa fa-save"></i>
       </button>
     </form>
